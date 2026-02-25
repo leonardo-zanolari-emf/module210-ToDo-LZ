@@ -22,7 +22,7 @@ jobs:
         ###### L'étape que j'ai ajoutée pour vérier la présence de index.html
       - name: Vérifier la présence de index.html
         run: |
-          if [ -f "./todo-app-main/src/frontend/index.html" ]; then
+          if [ -f "./todo-app/src/frontend/index.html" ]; then
             echo "Le fichier index.html existe"
           else
             echo "Erreur : index.html n'existe pas!"
