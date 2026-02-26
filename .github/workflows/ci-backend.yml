@@ -24,7 +24,7 @@ jobs:
       # Build de l’image Docker
       - name: Build Docker image
         run: |
-          docker build -t ${{ env.REG_NAME }}/${{ env.IMAGE_NAME }}:${{ github.sha }} todo-app-main/src/backend
+          docker build -t ${{ env.REG_NAME }}/${{ env.IMAGE_NAME }}:${{ github.sha }} todo-app/src/backend
       # Push vers la registry
       - name: Push Docker image
         run: |
