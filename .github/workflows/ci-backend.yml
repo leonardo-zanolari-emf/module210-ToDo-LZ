@@ -1,0 +1,33 @@
+name: Build and save my Docker image to a regitry
+on:
+  push:
+    branches:
+      - main  # Déclenchement lorsque le code est poussé sur main
+    paths:
+    - 'todo-app/src/backend/**'
+env:
+  REG_NAME: "acrinfofd21210.azurecr.io" # Nom du registy
+  IMAGE_NAME: "backend-app-lz" # Nom de votre image
+ 
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+ 
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+ 
+      # Login à la registry
+      - name: Log in to registry
+        run: echo "${{ secrets.REGISTRY_PASSWORD }}" | docker login ${{ env.REG_NAME }} -u ${{ secrets.REGISTRY_USERNAME }} --password-stdin
+ 
+      # Build de l’image Docker
+      - name: Build Docker image
+        run: |
+          docker build -t ${{ env.REG_NAME }}/${{ env.IMAGE_NAME }}:${{ github.sha }} todo-app-main/src/backend
+      # Push vers la registry
+      - name: Push Docker image
+        run: |
+          docker push ${{ env.REG_NAME }}/${{ env.IMAGE_NAME }}:${{ github.sha }}
+ 
+ 
