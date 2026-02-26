@@ -47,7 +47,7 @@ jobs:
         uses: treosh/lighthouse-ci-action@v9
         with:
           urls: |
-            https://wonderful-mushroom-005c3fd03.4.azurestaticapps.net/
+            https://yellow-mud-0a1042103.1.azurestaticapps.net/
           uploadArtifacts: false
           temporaryPublicStorage: true
           configPath: './lighthouserc.json'
